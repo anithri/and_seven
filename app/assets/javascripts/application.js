@@ -10,5 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// USE JAVASCRIPT from app/javascripts/packs/application NOT HERE
+//
 //= require rails-ujs
 //= require_tree .
