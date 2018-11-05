@@ -38,12 +38,16 @@ module Types
       argument :custom_award_id, ID, required: true, as: :id
     end
     def custom_award(id:)
-      ::CustomAward.find_by_id(id)
+      a = ::CustomAward.find_by_id(id)
+      a.editable_by(context[:current_user])
+      a
     end
 
     field :custom_awards, [Types::CustomAward], null: false
     def custom_awards
-      ::CustomAward.all
+      a = ::CustomAward.all
+      a.each{|c| c.editable_by(context[:current_user])}
+      a
     end
     #endregion
 

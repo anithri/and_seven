@@ -21,5 +21,10 @@
 
 class CustomAward < ApplicationRecord
   belongs_to :employee
+  attr_accessor :editable
   enum category: {award: 0, milestone: 1}
+
+  def editable_by(user)
+    @can_edit = (self.employee_id == user.id)
+  end
 end
