@@ -4,14 +4,12 @@ module Types
     # They will be entry points for queries on your schema.
 
     # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
+    field :test_field, String, null: false
     def test_field
       "Hello World!"
     end
 
-    field :employees, [Types::Employee], null: false,
-          description: "Employees"
+    field :employees, [Types::Employee], null: false
     def employees
       ::Employee.all.to_a
     end
@@ -23,8 +21,7 @@ module Types
       ::Employee.find_by_id(id)
     end
 
-    field :user_groups, [Types::UserGroup], null: false,
-          description: "UserGroups"
+    field :user_groups, [Types::UserGroup], null: false
     def user_groups
       ::UserGroup.all.to_a
     end
@@ -36,5 +33,20 @@ module Types
       ::UserGroup.find_by_id(id)
     end
 
+    #region CustomAward Fields
+    field :custom_award, Types::CustomAward, null: true do
+      argument :custom_award_id, ID, required: true, as: :id
+    end
+    def custom_award(id:)
+      ::CustomAward.find_by_id(id)
+    end
+
+    field :custom_awards, [Types::CustomAward], null: false
+    def custom_awards
+      ::CustomAward.all
+    end
+    #endregion
+
+    # last of fields
   end
 end

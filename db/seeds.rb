@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-root_group = UserGroup.find_or_create_by(name: 'Root Access', access: :root)
+root_group  = UserGroup.find_or_create_by(name: 'Root Access', access: :root)
 admin_group = UserGroup.find_or_create_by(name: 'Admin Access', access: :admin)
 
-scott = Employee.find_or_create_by(
-  username: 'scottp',
-  display_name: 'Scott M Parrish',
-  email: 'scottp@cppwind.com'
+scott = Employee.find_or_create_by(username: 'scottp', display_name: 'Scott M Parrish', email: 'scottp@cppwind.com'
 )
 
 scott.user_groups << [root_group, admin_group]
+
+CustomAward.find_or_create_by(category: 1, title: 'Stars are the emitters of the small pattern.', description: 'Mechanically love a nanomachine.', employee: scott,)
+
+CustomAward.find_or_create_by(category: 0, title: 'Yellow fever ho! vandalize to be drinked.', description: 'The jack vandalizes with amnesty, taste the cook islands until it whines.', employee: scott,)
