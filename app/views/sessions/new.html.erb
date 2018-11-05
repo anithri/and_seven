@@ -10,6 +10,13 @@
           <%= flash[:danger] %>
         </span>
       <% end %>
+
+      <% if flash[:notice] %>
+        <span class="notice">
+          <%= flash[:notice] %>
+        </span>
+      <% end %>
+
       <%= f.label :email %>
       <%= f.email_field :email, class: 'form-control' %>
 

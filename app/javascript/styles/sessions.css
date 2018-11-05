@@ -13,7 +13,6 @@
   & > pre {
     width: 30rem;
     background-color: var(--black-20);
-
   }
 }
 
@@ -49,7 +48,14 @@
       border-radius: var(--border-radius-3);
       padding: var(--spacing-extra-small) var(--spacing-small);
       text-align: center;
+    }
 
+    & > .notice {
+      background-color: var(--light-blue);
+      grid-column: 1 / span 2;
+      border-radius: var(--border-radius-3);
+      padding: var(--spacing-extra-small) var(--spacing-small);
+      text-align: center;
     }
 
     & > label {
