@@ -9,6 +9,7 @@ class CreateEmployees < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :phone
       t.string :mobile
+      t.string :remember_digest
 
       t.timestamps
     end

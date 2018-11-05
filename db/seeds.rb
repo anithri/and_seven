@@ -9,5 +9,10 @@
 root_group = UserGroup.find_or_create_by(name: 'Root Access', access: :root)
 admin_group = UserGroup.find_or_create_by(name: 'Admin Access', access: :admin)
 
-scott = Employee.find_or_create_by(username: 'scottp', display_name: 'Scott M Parrish')
+scott = Employee.find_or_create_by(
+  username: 'scottp',
+  display_name: 'Scott M Parrish',
+  email: 'scottp@cppwind.com'
+)
+
 scott.user_groups << [root_group, admin_group]

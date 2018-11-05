@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_04_202832) do
     t.string "email"
     t.string "phone"
     t.string "mobile"
+    t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["display_name"], name: "index_employees_on_display_name", unique: true

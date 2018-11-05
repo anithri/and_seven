@@ -4,15 +4,19 @@
     <header>
       <h1>Log In</h1>
     </header>
-      <%= form_for(:session, url: login_path) do |f| %>
-
-        <%= f.label :email %>
-        <%= f.email_field :email, class: 'form-control' %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password, class: 'form-control' %>
-
-        <%= f.submit "Log in", class: "btn btn-primary" %>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <% if flash[:danger] %>
+        <span class="danger">
+          <%= flash[:danger] %>
+        </span>
       <% end %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.submit "Log in", class: "btn btn-primary" %>
+    <% end %>
   </article>
 </main>

@@ -2,17 +2,18 @@
 #
 # Table name: employees
 #
-#  id           :uuid             not null, primary key
-#  display_name :string
-#  email        :string
-#  is_gone      :boolean          default(FALSE)
-#  mobile       :string
-#  phone        :string
-#  username     :string
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  gust_id      :integer
-#  pc3_id       :integer
+#  id              :uuid             not null, primary key
+#  display_name    :string
+#  email           :string
+#  is_gone         :boolean          default(FALSE)
+#  mobile          :string
+#  phone           :string
+#  remember_digest :string
+#  username        :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  gust_id         :integer
+#  pc3_id          :integer
 #
 # Indexes
 #
