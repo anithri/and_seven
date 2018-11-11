@@ -1,9 +1,8 @@
-import {gql} from 'apollo-boost'
-import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Query} from 'react-apollo'
 import React from 'react'
 import {GET_USER_DATA} from 'models/UserData'
+import CustomAwardsContainer from 'containers/CustomAwards'
 
 class HomePage extends React.Component {
   render() {
@@ -23,6 +22,7 @@ class HomePage extends React.Component {
                 <a href="/logout" data-method="delete">
                   Logout {user.name}
                 </a>
+                <CustomAwardsContainer className={'hiya'}/>
               </main>
             </div>
           )

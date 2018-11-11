@@ -1,8 +1,9 @@
 @import 'tachyons/custom.css';
 @import '__palette.css';
 @import '__variables.css';
-@import 'sessions.css';
+@import '_sessions.css';
 @import '_typography.css';
+
 html, body, .max {
   width: 100%;
   height: 100%;
