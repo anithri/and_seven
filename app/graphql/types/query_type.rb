@@ -51,6 +51,11 @@ module Types
     end
     #endregion
 
+    #region User
+    field :user, Types::User, null: false
+    def user
+      context[:current_user]
+    end
     # last of fields
   end
 end

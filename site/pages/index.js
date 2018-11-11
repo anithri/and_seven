@@ -5,9 +5,7 @@ import React from 'react'
 const SiteRouter = ({ className }) => {
   return (
     <Router>
-      <div className={className}>
-        <Route exact path="/" component={Home} />
-      </div>
+      <Route exact path="/" component={Home} />
     </Router>
   )
 }

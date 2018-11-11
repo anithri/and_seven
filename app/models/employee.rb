@@ -46,4 +46,8 @@ class Employee < ApplicationRecord
   def authenticate(_password)
     true
   end
+
+  def name
+    display_name
+  end
 end

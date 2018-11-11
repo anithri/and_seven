@@ -1,8 +1,36 @@
 @import 'tachyons/custom.css';
+@import '__palette.css';
+@import '__variables.css';
 @import 'sessions.css';
-
-html, body {
+@import '_typography.css';
+html, body, .max {
   width: 100%;
   height: 100%;
   background-color: var(--washed-blue);
+}
+
+#appWrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.pageWrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--washed-blue);
+
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+
+  & > * {
+    flex: 0 1 auto;
+    padding: var(--spacing-small);
+    border: thin solid var(--near-black);
+    border-radius: var(--border-radius-3);
+    background-color: var(--black-20);
+  }
 }
