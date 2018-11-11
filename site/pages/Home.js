@@ -1,19 +1,21 @@
-import { Link } from 'react-router-dom'
+import {gql} from 'apollo-boost'
+import {Link} from 'react-router-dom'
 import PropTypes from 'prop-types'
-
+import {Query} from 'react-apollo'
 import React from 'react'
 
 class HomePage extends React.Component {
   render() {
-    const { children, className } = this.props
-    console.log(this.props)
+    const {children, className} = this.props
     return (
       <div id="homePage" className={`pageWrapper ${className}`}>
         {children}
         <main>
           <h1>Hiya</h1>
           <p>How are you?</p>
-          <a href="/logout" data-method="delete">Logout</a>
+          <a href="/logout" data-method="delete">
+            Logout
+          </a>
         </main>
       </div>
     )

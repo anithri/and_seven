@@ -5,24 +5,29 @@ import Pages from 'pages'
 import React from 'react'
 import { Helmet as ReactHelmet } from 'react-helmet'
 
-const client = new ApolloClient({
-  fetchOptions: {
-    credentials: 'same-origin',
-  },
-  request: operation => {
-    const csrfToken = document
-      .querySelector('meta[name=csrf-token]')
-      .getAttribute('content')
+const createClient = (initialState) => {
+  console.log(initialState)
+  return new ApolloClient({
+    clientState: {defaults: initialState},
+    fetchOptions: {
+      credentials: 'same-origin',
+    },
+    request: operation => {
+      const csrfToken = document
+          .querySelector('meta[name=csrf-token]')
+          .getAttribute('content')
 
-    operation.setContext({
-      headers: { 'X-CSRF-Token': csrfToken },
-    })
-  },
-  uri: 'http://localhost:3000/graphql',
-})
-
+      operation.setContext({
+        headers: {'X-CSRF-Token': csrfToken},
+      })
+    },
+    uri: 'http://localhost:3000/graphql',
+  })
+}
 class App extends React.Component {
   render() {
+    console.log(this.props)
+    const client = createClient(this.props.initialState)
     return (
       <ApolloProvider client={client}>
         <Pages className="max">

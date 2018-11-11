@@ -1,3 +1,3 @@
-<div id="appWrapper">
+<%= content_tag :div, id: "appWrapper", data: @initial_state do %>
   <%= yield %>
-</div>
+<% end %>
