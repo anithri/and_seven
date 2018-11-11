@@ -2,18 +2,42 @@
   "name": "and_seven",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.0.0",
     "@rails/webpacker": "https://github.com/rails/webpacker",
+    "apollo-boost": "^0.1.20",
+    "classnames": "^2.2.6",
+    "graphql": "^14.0.2",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
+    "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
-    "tachyons-custom": "^4.9.6"
+    "react-helmet": "^5.2.0",
+    "react-router-dom": "^4.3.1",
+    "react-typography": "^0.16.13",
+    "tachyons-custom": "^4.9.6",
+    "typography-theme-github": "^0.15.10"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-plugin-module-resolver": "^3.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "eslint": "^5.9.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "hygen": "^1.6.2",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.3.0",
     "prettier": "^1.14.3",
     "webpack-dev-server": "^3.1.10"
+  },
+  "scripts": {
+    "fix:other": "yarn prettier --write",
+    "fix:js": "yarn test:js --fix",
+    "fix": "yarn fix:js && yarn fix:other",
+    "prettier": "prettier \"{site,app}/**/*.{json,md,js,css}\" --ignore-path ./.prettierignore --write",
+    "test:other": "yarn prettier --list-different",
+    "test:js": "eslint --ignore-path .gitignore --ignore-path .prettierignore \"**/*.{js,jsx}\"",
+    "test": "yarn test:other && yarn test:js",
+    "types": "typesync"
   }
 }

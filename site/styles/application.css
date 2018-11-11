@@ -1,0 +1,8 @@
+@import 'tachyons/custom.css';
+@import 'sessions.css';
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--washed-blue);
+}
