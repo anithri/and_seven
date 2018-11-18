@@ -38,8 +38,9 @@ RSpec.describe CustomAward, type: :model do
     it 'should not allow duplicate titles' do
       expect(custom_award).to allow_value(attributes[:title]).for(:title)
     end
-
     it 'should check for presence' do
+      expect(custom_award).to validate_presence_of :description
+      expect(custom_award).to validate_presence_of :employee
       expect(custom_award).to validate_presence_of :title
     end
     it 'should check for uniqueness' do
