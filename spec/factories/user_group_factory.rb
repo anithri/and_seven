@@ -13,8 +13,15 @@
 #  index_user_groups_on_name  (name) UNIQUE
 #
 
-class UserGroup < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-  has_and_belongs_to_many :employees
-  enum access: {guest: 0, user: 1, power_user: 2, limited_admin: 3, admin: 4, root: 5}
+FactoryBot.define do
+  factory :user_group do
+    name {Faker::Name.unique.name}
+    access {'guest'}
+
+    %w{guest user power_user limited_admin admin root}.each do |access_lvl|
+      factory (access_lvl + '_access').to_sym, class: UserGroup do
+        access {access_lvl}
+      end
+    end
+  end
 end

@@ -1,11 +1,8 @@
 ---
-messages: |
-  - hygen {bold factory} new --name [NAME]
-to: spec/factories/<%= name %>.rb
+to: spec/factories/<%= h.inflection.underscore(name) %>_factory.rb
 ---
-# frozen_string_literal: true
 FactoryBot.define do
-  factory :<%= h.inflection.transform.underscore(name) %> do
-    sequence(:title) { |n| "#{Faker::Lorem.word}-#{n}"}
+  factory :<%= h.inflection.underscore(name) %> do
+    name {Faker::Name.unique.name}
   end
 end
