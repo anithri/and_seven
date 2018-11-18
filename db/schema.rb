@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_030505) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["display_name"], name: "index_employees_on_display_name", unique: true
+    t.index ["remember_digest"], name: "index_employees_on_remember_digest", unique: true
     t.index ["username"], name: "index_employees_on_username", unique: true
   end
 

@@ -19,6 +19,13 @@ guard :bundler do
   files.each { |file| watch(helper.real_path(file)) }
 end
 
+guard 'spring', bundler: true do
+  watch('Gemfile.lock')
+  watch(%r{^config/})
+  watch(%r{^spec/(support|factories|matchers)/})
+  watch(%r{^spec/factory.rb})
+end
+
 # Guard-Rails supports a lot options with default values:
 # daemon: false                        # runs the server as a daemon.
 # debugger: false                      # enable ruby-debug gem.
@@ -42,7 +49,7 @@ end
 
 guard :process, name: 'webpack-dev-server', command: 'bin/webpack-dev-server'
 
-guard :rspec, cmd: "bundle exec rspec" do
+guard :rspec, cmd: "bundle exec rspec", all_on_start: true, all_after_pass: true do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
@@ -86,3 +93,4 @@ guard :rspec, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 end
+

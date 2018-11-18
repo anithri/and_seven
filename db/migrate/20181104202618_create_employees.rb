@@ -15,5 +15,6 @@ class CreateEmployees < ActiveRecord::Migration[5.2]
     end
     add_index :employees, :username, unique: true
     add_index :employees, :display_name, unique: true
+    add_index :employees, :remember_digest, unique: true
   end
 end

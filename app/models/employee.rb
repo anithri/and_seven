@@ -17,13 +17,17 @@
 #
 # Indexes
 #
-#  index_employees_on_display_name  (display_name) UNIQUE
-#  index_employees_on_username      (username) UNIQUE
+#  index_employees_on_display_name     (display_name) UNIQUE
+#  index_employees_on_remember_digest  (remember_digest) UNIQUE
+#  index_employees_on_username         (username) UNIQUE
 #
 
 class Employee < ApplicationRecord
   include ActiveModel::SecurePassword
   has_secure_token :remember_digest
+
+  validates :display_name, uniqueness: true, presence: true
+  validates :username, uniqueness: true, presence: true
 
   has_and_belongs_to_many :user_groups
 

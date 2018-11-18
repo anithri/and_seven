@@ -1,0 +1,11 @@
+example_id                                      | status  | run_time        |
+----------------------------------------------- | ------- | --------------- |
+./spec/interactors/session/login_spec.rb[1:1:1] | pending | 0.00001 seconds |
+./spec/models/custom_award_spec.rb[1:1]         | pending | 0 seconds       |
+./spec/models/employee_spec.rb[1:1]             | passed  | 0.06515 seconds |
+./spec/models/employee_spec.rb[1:2:1]           | passed  | 0.00552 seconds |
+./spec/models/employee_spec.rb[1:2:2]           | passed  | 0.00592 seconds |
+./spec/models/employee_spec.rb[1:2:3]           | passed  | 0.01033 seconds |
+./spec/models/employee_spec.rb[1:3:1]           | passed  | 0.00916 seconds |
+./spec/models/employee_spec.rb[1:4:1]           | passed  | 0.00665 seconds |
+./spec/models/user_group_spec.rb[1:1]           | pending | 0 seconds       |
