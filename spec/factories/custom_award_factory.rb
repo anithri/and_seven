@@ -19,16 +19,11 @@
 #  fk_rails_...  (employee_id => employees.id)
 #
 
-class CustomAward < ApplicationRecord
-  belongs_to :employee
-  attr_accessor :editable
-  enum category: {award: 0, milestone: 1}
-
-  validates :title, presence: true, uniqueness: true
-  validates :description, presence: true
-  validates :employee, presence: true
-
-  def editable_by(user)
-    @can_edit = (self.employee_id == user.id)
+FactoryBot.define do
+  factory :custom_award do
+    category {%w{award milestone}.sample}
+    title {Faker::Company.unique.industry}
+    description {Faker::Company.unique.catch_phrase}
+    employee
   end
 end
