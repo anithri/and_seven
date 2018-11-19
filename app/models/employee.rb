@@ -17,6 +17,7 @@
 #
 # Indexes
 #
+#  index_employees_on_email            (email) UNIQUE
 #  index_employees_on_name             (name) UNIQUE
 #  index_employees_on_remember_digest  (remember_digest) UNIQUE
 #  index_employees_on_username         (username) UNIQUE
@@ -26,6 +27,7 @@ class Employee < ApplicationRecord
   include ActiveModel::SecurePassword
   has_secure_token :remember_digest
 
+  validates :email, uniqueness: true, presence: true
   validates :name, uniqueness: true, presence: true
   validates :username, uniqueness: true, presence: true
 
@@ -33,4 +35,8 @@ class Employee < ApplicationRecord
 
   scope :is_gone?, -> {where(is_gone: true)}
   scope :still_here?, -> {where(is_gone: false)}
+
+  def still_here?
+    !is_gone?
+  end
 end

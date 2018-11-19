@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UserPolicy do
-  let(:user) { User.new }
-
-  subject { described_class }
+  let(:user) {User.from(create(:employee))}
 
   permissions ".scope" do
     pending "add some examples to (or delete) #{__FILE__}"

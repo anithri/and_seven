@@ -17,6 +17,7 @@
 #
 # Indexes
 #
+#  index_employees_on_email            (email) UNIQUE
 #  index_employees_on_name             (name) UNIQUE
 #  index_employees_on_remember_digest  (remember_digest) UNIQUE
 #  index_employees_on_username         (username) UNIQUE
@@ -30,6 +31,7 @@ FactoryBot.define do
     is_gone {rand(8).zero?}
     phone {Faker::PhoneNumber.unique.phone_number}
     mobile {Faker::PhoneNumber.unique.phone_number}
+    remember_digest {BCrypt::Password.create(Faker::Internet.password)}
     gust_id {rand(100)}
     pc3_id {rand(100) + 1000}
   end

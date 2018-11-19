@@ -30,6 +30,6 @@ class Session::Login
   end
 
   def user
-    context.user ||= employee ? User.new(employee) : nil
+    context.user ||= employee ? User.from(employee) : nil
   end
 end
