@@ -4,32 +4,28 @@
 # Examples:
 #
 require 'faker'
-
-root_group  = UserGroup.find_or_create_by name:   'Root Access',
-                                          access: :root
-admin_group = UserGroup.find_or_create_by name:   'Admin Access',
-                                          access: :admin
-user_group  = UserGroup.find_or_create_by name:   'User Access',
-                                          access: :user
+groups = UserGroup.accesses.keys.map do |access|
+  UserGroup.find_or_create_by name: "#{access.titleize} Access",
+                              access: access
+end
 
 scott = Employee.find_or_create_by username:     'scottp',
-                                   display_name: 'Scott M Parrish',
+                                   name: 'Scott M Parrish',
                                    email:        'scottp@cppwind.com'
 
 kevin = Employee.find_or_create_by username:     'kott',
-                                   display_name: 'Kevin Ott',
+                                   name: 'Kevin Ott',
                                    email:        'kott@cppwind.com'
 
-scott.user_groups << [root_group,
-                      admin_group]
-kevin.user_groups << [admin_group]
+scott.user_groups << groups.slice(-2,2)
+kevin.user_groups << groups.slice(-2,1)
 users = [scott, kevin]
 
 10.times do |i|
   name     = Faker::Name.unique.name
   username = Faker::Internet.user_name(name)
 
-  user = Employee.create display_name: name,
+  user = Employee.create name: name,
                          username:     username,
                          email:        "#{username}@cppwind.com",
                          is_gone:      rand(8).zero?,
@@ -37,7 +33,7 @@ users = [scott, kevin]
                          mobile:       Faker::PhoneNumber.unique.phone_number,
                          gust_id:      100 + i,
                          pc3_id:       1000 + i,
-                         user_groups:  [user_group]
+                         user_groups:  groups.slice(0,5).sample(1 + rand(2))
 
   users.push user
 end

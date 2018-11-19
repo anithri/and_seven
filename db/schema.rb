@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_030505) do
 
   create_table "employees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "username"
-    t.string "display_name"
+    t.string "name"
     t.boolean "is_gone", default: false
     t.integer "gust_id"
     t.integer "pc3_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_030505) do
     t.string "remember_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["display_name"], name: "index_employees_on_display_name", unique: true
+    t.index ["name"], name: "index_employees_on_name", unique: true
     t.index ["remember_digest"], name: "index_employees_on_remember_digest", unique: true
     t.index ["username"], name: "index_employees_on_username", unique: true
   end

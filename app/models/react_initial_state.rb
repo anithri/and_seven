@@ -4,6 +4,6 @@ class ReactInitialState
   end
 
   def data
-    {raw: {user: {name: @user.display_name}}}
+    {raw: {user: {name: @user.name}}}
   end
 end

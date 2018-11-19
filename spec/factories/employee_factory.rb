@@ -3,10 +3,10 @@
 # Table name: employees
 #
 #  id              :uuid             not null, primary key
-#  display_name    :string
 #  email           :string
 #  is_gone         :boolean          default(FALSE)
 #  mobile          :string
+#  name            :string
 #  phone           :string
 #  remember_digest :string
 #  username        :string
@@ -17,15 +17,15 @@
 #
 # Indexes
 #
-#  index_employees_on_display_name     (display_name) UNIQUE
+#  index_employees_on_name             (name) UNIQUE
 #  index_employees_on_remember_digest  (remember_digest) UNIQUE
 #  index_employees_on_username         (username) UNIQUE
 #
 
 FactoryBot.define do
   factory :employee do
-    display_name {Faker::Name.unique.name}
-    username {Faker::Internet.user_name(display_name)}
+    name {Faker::Name.unique.name}
+    username {Faker::Internet.user_name(name)}
     email {"#{username}@cppwind.com"}
     is_gone {rand(8).zero?}
     phone {Faker::PhoneNumber.unique.phone_number}

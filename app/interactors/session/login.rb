@@ -10,7 +10,7 @@ class Session::Login
 
   def call
     if user.authenticate(password)
-      context.notice = "Nice to see you #{user.display_name}"
+      context.notice = "Nice to see you #{user.name}"
     else
       context.error = 'Invalid email/password'
       context.fail!
@@ -25,7 +25,11 @@ class Session::Login
     context.params[:password]
   end
 
+  def employee
+    Employee.find_by_email(email)
+  end
+
   def user
-    context.user ||= Employee.find_by_email(email)
+    context.user ||= employee ? User.new(employee) : nil
   end
 end

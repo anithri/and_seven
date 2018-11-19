@@ -3,10 +3,10 @@
 # Table name: employees
 #
 #  id              :uuid             not null, primary key
-#  display_name    :string
 #  email           :string
 #  is_gone         :boolean          default(FALSE)
 #  mobile          :string
+#  name            :string
 #  phone           :string
 #  remember_digest :string
 #  username        :string
@@ -17,7 +17,7 @@
 #
 # Indexes
 #
-#  index_employees_on_display_name     (display_name) UNIQUE
+#  index_employees_on_name             (name) UNIQUE
 #  index_employees_on_remember_digest  (remember_digest) UNIQUE
 #  index_employees_on_username         (username) UNIQUE
 #
@@ -31,22 +31,22 @@ RSpec.describe Employee, type: :model do
 
   let(:attributes) do
     {
-      display_name: 'Bruce Wayne'
+      name: 'Bruce Wayne'
     }
   end
 
   let(:employee) {create(:employee, **attributes)}
 
   describe 'model validations' do
-    it 'should not allow duplicate display_names' do
-      expect(employee).to allow_value(attributes[:display_name]).for(:display_name)
+    it 'should not allow duplicate names' do
+      expect(employee).to allow_value(attributes[:name]).for(:name)
     end
 
     it 'should check for presence' do
-      expect(employee).to validate_presence_of :display_name
+      expect(employee).to validate_presence_of :name
     end
     it 'should check for uniqueness' do
-      expect(employee).to validate_uniqueness_of :display_name
+      expect(employee).to validate_uniqueness_of :name
     end
   end
 
