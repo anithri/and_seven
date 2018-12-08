@@ -1,13 +1,5 @@
 module Types
   class QueryType < Types::BaseObject
-    # Add root-level fields here.
-    # They will be entry points for queries on your schema.
-
-    # TODO: remove me
-    field :test_field, String, null: false
-    def test_field
-      "Hello World!"
-    end
 
     field :employees, [Types::Employee], null: false
     def employees
@@ -39,14 +31,12 @@ module Types
     end
     def custom_award(id:)
       a = ::CustomAward.find_by_id(id)
-      a.editable_by(context[:current_user])
       a
     end
 
     field :custom_awards, [Types::CustomAward], null: false
     def custom_awards
       a = ::CustomAward.all
-      a.each{|c| c.editable_by(context[:current_user])}
       a
     end
     #endregion

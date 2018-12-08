@@ -6,4 +6,5 @@ class Types::Employee < Types::BaseObject
   field :mobile, String, null: true
   field :email, String, null: false
   field :user_groups, [Types::UserGroup], null: true
+  field :custom_awards, [Types::CustomAward], null: true
 end

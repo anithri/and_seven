@@ -32,7 +32,7 @@ class Employee < ApplicationRecord
   validates :username, uniqueness: true, presence: true
 
   has_and_belongs_to_many :user_groups
-
+  has_many :custom_awards
   scope :is_gone?, -> {where(is_gone: true)}
   scope :still_here?, -> {where(is_gone: false)}
 

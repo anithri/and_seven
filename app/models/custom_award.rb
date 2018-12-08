@@ -28,7 +28,7 @@ class CustomAward < ApplicationRecord
   validates :description, presence: true
   validates :employee, presence: true
 
-  def editable_by(user)
+  def editable_by?(user)
     @can_edit = (self.employee_id == user.id)
   end
 end
